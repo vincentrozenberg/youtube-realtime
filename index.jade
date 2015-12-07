@@ -1,0 +1,179 @@
+//output:index.html
+doctype
+html
+  head
+    title YouTube Subscriber Counter
+    meta(http-equiv='Content-Type', content='text/html;charset=utf-8')
+    meta(name='fragment', content='!')
+    // <meta name="viewport" content="width=800px, initial-scale=1x, user-scalable=yes" />
+    link(rel='shortcut icon', type='image/png', href='icon.png')
+    link(href='//fonts.googleapis.com/css?family=Roboto:400', rel='stylesheet', type='text/css')
+    link(rel='stylesheet', type='text/css', href='style.css')
+    link(rel='stylesheet', type='text/css', href='odometer-theme.css')
+    script(type='text/javascript', src='script.js')
+    script(type='text/javascript', src='odometer.min.js')
+    // Social
+    link(rel='canonical', href='https://akshatmittal.com/youtube-realtime/')
+    meta(name='twitter:card', content='summary')
+    meta(name='twitter:site', content='@itsreallyakshat')
+    meta(name='twitter:title', content='YouTube Realtime Subscriber Count')
+    meta(name='twitter:description', content='YouTube Realtime is the easiest way to view the realtime subscriber count for any YouTuber on the planet! Simply enter the channel name, or ID and you are good to go!')
+    meta(name='twitter:creator', content='@itsreallyakshat')
+    meta(name='twitter:image', content='https://akshatmittal.com/youtube-realtime/icon.png')
+    meta(property='og:title', content='YouTube Realtime Subscriber Count')
+    meta(property='og:type', content='article')
+    meta(property='og:url', content='https://akshatmittal.com/youtube-realtime/')
+    meta(property='og:image', content='https://akshatmittal.com/youtube-realtime/icon.png')
+    meta(property='og:description', content='YouTube Realtime is the easiest way to view the realtime subscriber count for any YouTuber on the planet! Simply enter the channel name, or ID and you are good to go!')
+    meta(property='og:site_name', content='Akshat Mittal')
+    meta(property='fb:admins', content='100000581280466')
+    meta(property='article:author', content='https://www.facebook.com/itsreallyakshat')
+  body
+    #fb-root
+    #cover
+      h1 YouTube Realtime
+      h2 Subscriber Count
+    #main.top
+      #deviceOrientation.notice
+        | You are recommended to switch your device to landscape orientation.
+        br
+      span#username Loading..
+      br
+      i
+        small ▲ click to change user ▲
+      br
+      br
+      | 		Current realtime subscriber count from YouTube:
+      br
+      h2.count_live ..wait..
+      br
+      | 		YouTube is still stuck at:
+      br
+      h2.count_yt ..wait..
+      br
+      | 		subscribers with 
+      h2.count_view.normalize ..wait..
+      |  total video views.
+      br
+      span#milestoneBox.milestones
+        br
+        | You are just 
+        h2.milestone_away ..wait..
+        | 	subscribers away from 
+        h2.milestone_target ..wait..
+        | !
+      br
+      small
+        | The live count is updated every second, while count from YouTube is updated every minute.
+      br
+      section.ac-container
+        div
+          input#ac-1.accordion(name='accordion-1', type='radio')
+          label(for='ac-1') Settings
+          article.ac-settings
+            .inner
+              .dark-theme.setting
+                span Dark Theme:
+                .onoffswitch
+                  input#darkTheme.onoffswitch-checkbox(type='checkbox', name='darkTheme', onchange='toggleDark()')
+                  label.onoffswitch-label(for='darkTheme') On
+                br
+                br
+                p
+                  | Dark Theme eases the colors for continuous viewing in dark environments, but it's probably not the most beautiful thing you'll see today.
+              .milestone.setting
+                span Milestones:
+                .onoffswitch
+                  input#milestone.onoffswitch-checkbox(type='checkbox', name='milestone', onchange='toggleMilestones()')
+                  label.onoffswitch-label(for='milestone') On
+                br
+                br
+                p
+                  | Milestones automatically calculate the next milestone and tells you the required number of subscribers to hit that.
+        div
+          input#ac-2.accordion(name='accordion-1', type='radio', checked='')
+          label(for='ac-2') Help & Instructions
+          article.ac-help
+            .inner
+              p
+                | This is a simple experiment which shows the current live subscriber count on YouTube for a channel or user. The count displayed on YouTube is often incorrect because it doesn't update in realtime. The count on this page is taken directly from the Google's Infrastructure and hence is as accurate as possible.
+              p
+                | After clicking 
+                a(href='javascript:newUsername();', style='border-bottom:none') change username
+                |  above, you can enter the new channel name in any format. You can also input search terms for a channel, this will try to automatically correct spellings in most cases. This is as good as YouTube Search itself, because it uses the same engine to search for channels.
+                br
+                br
+                | 						You can literally enter anything that YouTube supports. Examples:
+                br
+                ul
+                  li
+                    | Channel Username (Example: 
+                    b PewDiePie
+                    | )
+                  li
+                    | Channel ID (Example: 
+                    b UCKlhpmbHGxBE6uw9B_uLeqQ
+                    | )
+                  li
+                    | Channel Name (Example: 
+                    b Fine Brothers Entertainment
+                    | )
+                  li
+                    | YouTube URL (Example: 
+                    b youtube.com/mkbhd
+                    | )
+                  li
+                    | Search Terms (Example: 
+                    b One Direction
+                    | )
+                  li
+                    | Self Discovery Channels (Example: 
+                    b #Music
+                    | )
+        div
+          input#ac-3.accordion(name='accordion-1', type='radio')
+          label(for='ac-3') Share!
+          article.ac-share
+            .inner
+              p
+                | You can share the live subscriber counts for any channel on YouTube by sharing the following URL. You can also bookmark (Ctrl/Cmd + D) the current URL to come back anytime!
+                br
+                br
+                input#shareURL(type='text', name='url', value='..wait..', onclick='this.select()', readonly='')
+                br
+                br
+                button#shareBtn.facebook(type='button', onclick="update.share('fb');") Share on Facebook!
+                br
+                button#shareBtn.twitter(type='button', onclick="update.share('twtr');") Share on Twitter!
+        div
+          input#ac-4.accordion(name='accordion-1', type='radio')
+          label(for='ac-4') Everything Else
+          article.ac-else
+            .inner
+              p
+                | You can find more information about the project on 
+                a(href='https://github.com/akshatmittal/youtube-realtime/blob/gh-pages/README.md', target='_blank') GitHub
+                |  including license and contributors. You can get in touch with me over 
+                a(href='https://twitter.com/itsreallyakshat', target='_blank') Twitter
+                |  or 
+                a(href='mailto:ytlive@akshatmittal.com', target='_blank') email
+                | , if you prefer. Do let me know if you have any feedback or ideas for this project!
+              p
+                | I've been seeing a lot of copies of this project on the internet, please consider adding an attribution if you are planning to deploy this project on your website. If you are a YouTuber, consider using a direct link for your channel instead of creating a new clone, that'll save you from a lot of hassle. Thanks!
+              //
+                You can use the following HTML code for attribution:
+                <span>&copy; <a href="http://akshatmittal.com" target="_blank">Akshat Mittal</a>. This is an <a href="https://github.com/akshatmittal/youtube-realtime" target="_blank">open-source project</a> originally appearing on <a href="https://akshatmittal.com/youtube-realtime/">GitHub</a>.</span>
+    #main
+      .fb-like(data-href='https://akshatmittal.com/youtube-realtime/', data-layout='button', data-action='like', data-show-faces='false', data-share='true')
+      .fb-follow(data-href='https://www.facebook.com/itsreallyakshat', data-colorscheme='light', data-layout='button', data-show-faces='false')
+      .g-plusone(data-size='medium', data-annotation='none')
+      a.twitter-follow-button(href='https://twitter.com/itsreallyakshat', data-show-count='false', data-size='medium') Follow @itsreallyakshat
+      a.twitter-share-button(href='https://twitter.com/intent/tweet?text=YouTube%20Realtime%20Subscriber%20Count%20by%20%40itsreallyakshat!', data-count='none', data-size='medium') Tweet
+      br
+      br
+      small
+        | © 
+        a(href='https://akshatmittal.com/', target='_blank') Akshat Mittal
+        | . This is an 
+        a(href='https://github.com/akshatmittal/youtube-realtime', target='_blank') open-source project
+        |  under the GPL v3 License.
